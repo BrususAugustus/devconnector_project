@@ -1,0 +1,4 @@
+{
+    "mongoURI":"mongodb+srv://bartek123:aO8Bnc2oV0SRoQCz@cluster0.edblp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+    "jwtSecret":"deathIsEternalAndYouCanSuckMydick"
+}
