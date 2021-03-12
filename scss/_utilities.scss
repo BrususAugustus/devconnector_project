@@ -1,0 +1,232 @@
+//Container
+.container {
+  max-width: $max-width;
+  margin: auto;
+  overflow: hidden;
+  padding: 0 3rem;
+  margin-top: 7rem;
+  margin-bottom: 3rem;
+}
+
+.bg {
+  &-primary {
+    @include set-background($primary-color);
+  }
+
+  &-light {
+    @include set-background($light-color);
+    border: solid 1px #ccc;
+  }
+  &-dark {
+    @include set-background($dark-color);
+  }
+  &-success {
+    @include set-background($success-color);
+  }
+  &-danger {
+    @include set-background($danger-color);
+  }
+  &-white {
+    @include set-background(#fff);
+    border: solid 1px #ccc;
+  }
+}
+
+//Text
+.text-primary {
+  color: $primary-color;
+}
+.x-large {
+  font-size: 5rem;
+  line-height: 5rem;
+  margin-bottom: 3rem;
+}
+.large {
+  font-size: 3.5rem;
+  line-height: 5rem;
+  margin-bottom: 3rem;
+}
+.big {
+  font-size: 2rem;
+  line-height: 3rem;
+  margin-bottom: 2rem;
+}
+.lead {
+  font-size: 2rem;
+  line-height: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+//Background
+.dark-overlay {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+//Buttons
+.btn {
+  display: inline-block;
+  background: $light-color;
+  color: #333;
+  padding: 0.2rem 1rem;
+  border: none;
+  cursor: pointer;
+  font-size: 2rem;
+  margin-right: 1rem;
+  outline: none;
+  transition: all 0.2s ease-in;
+
+  &.btn-primary {
+    @include set-background($primary-color);
+    &:hover {
+      background: lighten($primary-color, 10%);
+    }
+  }
+
+  &.btn-dark {
+    @include set-background($dark-color);
+    &:hover {
+      background: lighten($dark-color, 10%);
+    }
+  }
+  &.btn-success {
+    @include set-background($success-color);
+    &:hover {
+      background: lighten($light-color, 10%);
+    }
+  }
+  &.btn-danger {
+    @include set-background($danger-color);
+    &:hover {
+      background: lighten($danger-color, 10%);
+    }
+  }
+
+  &:hover {
+    background: lighten($dark-color, 20%);
+    color: #fff;
+  }
+}
+
+//Alerts
+.alert {
+  padding: 1rem;
+  margin: 1rem;
+  opacity: 0.8;
+  background: $primary-color;
+  color: #333;
+  &.alert-primary {
+    @include set-background($primary-color);
+  }
+  &.alert-danger {
+    @include set-background($danger-color);
+  }
+  &.alert-success {
+    @include set-background($primary-color);
+  }
+  &.alert-danger {
+    @include set-background($danger-color);
+  }
+}
+
+//font awesome
+
+.fa-bigger {
+  padding: 1rem;
+  font-size: 3rem;
+}
+
+//Image
+
+.round-img {
+  border-radius: 50%;
+}
+
+.small-img{
+  height:10%;
+  width: 10%;
+}
+
+.line {
+  height: 1px;
+  background-color: #ccc;
+  margin: 1.5rem 0;
+}
+
+//badges
+
+.badge {
+  padding: 0.5rem;
+  margin: 0.5rem;
+  text-align: center;
+  background-color: $light-color;
+  color: #333;
+
+  &.badge-primary {
+    @include set-background($primary-color);
+  }
+
+  &.badge-dark {
+    @include set-background($dark-color);
+  }
+
+  &.badge-success {
+    @include set-background($success-color);
+  }
+
+  &.badge-danger {
+    @include set-background($danger-color);
+  }
+}
+
+//table
+.table{
+    padding: 2rem;
+}//table
+
+.table{
+  th{
+    background-color: $light-color;
+  }
+   td{
+    padding: 2rem;
+    text-align: center;
+  }
+}
+
+
+//input
+input[type="submit"]{
+  font-family: inherit;
+}
+
+.social-input{
+  display:flex;
+
+  i{
+    margin-right:1rem;
+    width: 6rem;
+
+    &.fa-twitter{
+      color:#38a1f3;
+    }
+    &.fa-instagram{
+      color:#3f729b;
+    }
+    &.fa-facebook{
+      color:#3b5998;
+    }
+    &.fa-youtube{
+      color:#c4302b;
+    }
+    &.fa-linkedin{
+      color:#0077b5;
+    }
+  }
+
+
+}

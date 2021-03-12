@@ -1,0 +1,184 @@
+@import "config";
+@import "utilities";
+@import "form";
+
+html {
+  font-size: 12px;
+  font-family: "Raleway", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  
+  font-size: 1.6rem;
+  background-color: #ffff;
+  color: #333;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  width: 100%;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1.5rem;
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  top: 0;
+  border-bottom: solid 1px $primary-color;
+  opacity: 0.9;
+
+  ul {
+    display: flex;
+  }
+
+  li {
+    margin: 0 1rem;
+    padding: 0.25rem;
+  }
+
+  a:hover {
+    color: $primary-color;
+  }
+}
+
+//Landing
+.landing {
+  position: relative;
+  background: url("../img/showcase.jpg") no-repeat center center/cover;
+  height: 100vh;
+
+  &-inner {
+    height: 100vh;
+    width: 80%;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+// Profile page
+
+.profile {
+  display: grid;
+  grid-template-columns: 3fr 4fr 3fr;
+  align-items: center;
+  grid-gap: 7rem;
+  padding: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-areas:
+    "top top"
+    "about about"
+    "exp edu"
+    "github github";
+  grid-gap: 2rem;
+}
+  .profile-top {
+    grid-area: top;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    img {
+      width: 30%;
+      height: 30%;
+    }
+
+    .icons a:hover {
+      transition: all ease-in-out 0.3s;
+      color: $dark-color;
+    }
+  }
+  .profile-about {
+    grid-area: about;
+    text-align: center;
+
+    .skills {
+      display: flex;
+      justify-content: center;
+      text-align: center;
+    }
+  }
+  .profile-edu {
+    grid-area: edu;
+  }
+  .profile-exp {
+    grid-area: exp;
+  }
+  .profile-github {
+    grid-area: github;
+
+    .repo{
+      display:flex;
+      & >div:first-child{
+        flex:7;
+        flex-basis:70%;
+      }
+      & >div:last-child{
+        flex:3;
+        flex-basis:20%;
+      }
+    }
+  }
+
+  .profile-exp,
+  .profile-edu {
+    & > div {
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: #ccc 1px dotted;
+    }
+    &:last-child {
+      border: none;
+    }
+  }
+
+
+  //Posts page
+.post-form-header{
+  padding:1rem;
+}
+
+.post{
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-gap:2rem;
+  align-items: center;
+  padding: 1.5rem;
+
+  &>div:first-child{
+    text-align: center;
+  }
+  img{
+    width:140px;
+  }
+}
+
+@import "mobile"

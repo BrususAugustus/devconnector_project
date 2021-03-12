@@ -1,4 +1,6 @@
 {
     "mongoURI":"mongodb+srv://bartek123:aO8Bnc2oV0SRoQCz@cluster0.edblp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
-    "jwtSecret":"deathIsEternalAndYouCanSuckMydick"
+    "jwtSecret":"deathIsEternalAndYouCanSuckMydick",
+    "githubClientId" : "1b7c64a381e18ab01bcb",
+    "githubSecret" : "d43968411b4a29ca1a2e7c840414431b3f79ff81"
 }
