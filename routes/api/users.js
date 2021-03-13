@@ -44,7 +44,7 @@ router.post(
 
       // Create new user
       user = new User({
-        name,
+        name, 
         email,
         avatar,
         password,

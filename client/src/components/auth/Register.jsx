@@ -1,6 +1,10 @@
 import React, { Fragment, useState } from "react";
+import { Link } from "react-router-dom";
 
-const Register = () => {
+import { connect } from "react-redux";
+import { setAlert } from "../../redux/actions/alert";
+import PropTypes from "prop-types";
+const Register = ({ setAlert }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -14,16 +18,14 @@ const Register = () => {
   const setValues = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-const onSubmit = (e)=>{
+  const onSubmit = async (e) => {
     e.preventDefault();
-    if(password !== confirmPassword){
-        console.log("Passwords don't match")
+    if (password !== confirmPassword) {
+      setAlert("Passwords don't match", "danger");
+    } else {
+      console.log("succ");
     }
-    else{
-        console.log(formData)
-    }
-
-}
+  };
 
   return (
     <Fragment>
@@ -31,12 +33,12 @@ const onSubmit = (e)=>{
       <p className="lead">
         <i className="fas fa-user"></i>Create Your Account
       </p>
-      <form onSubmit={onSubmit}  action="dashboard.html" className="form">
+      <form onSubmit={onSubmit} action="dashboard.html" className="form">
         <div className="form-group">
           <input
             onChange={(e) => setValues(e)}
             value={name}
-            name='name'
+            name="name"
             type="text"
             placeholder="Name"
             required
@@ -47,7 +49,7 @@ const onSubmit = (e)=>{
           <input
             onChange={(e) => setValues(e)}
             value={email}
-            name='email'
+            name="email"
             type="email"
             placeholder="Email Adress"
             required
@@ -61,7 +63,7 @@ const onSubmit = (e)=>{
           <input
             value={password}
             onChange={(e) => setValues(e)}
-            name='password'
+            name="password"
             type="password"
             placeholder="Password"
             required
@@ -69,11 +71,14 @@ const onSubmit = (e)=>{
             maxLength="20"
           />
         </div>
+        <small className="form-text">
+          Password has to be 8 characters long or more.
+        </small>
         <div className="form-group">
           <input
             value={confirmPassword}
             onChange={(e) => setValues(e)}
-            name='confirmPassword'
+            name="confirmPassword"
             type="password"
             placeholder="Confirm Password"
             required
@@ -81,16 +86,20 @@ const onSubmit = (e)=>{
             maxLength="20"
           />
         </div>
-        <input  className="btn btn-primary" type="submit" value="Register" />
+        <input className="btn btn-primary" type="submit" value="Register" />
       </form>
       <p className="my-1">
         Already have an account?{" "}
-        <a className="text-primary" href="login.html">
+        <Link to="/login" className="text-primary">
           Sign in
-        </a>
+        </Link>
       </p>
     </Fragment>
   );
 };
 
-export default Register;
+Register.propTypes = {
+  setAlert: PropTypes.func.isRequired,
+};
+
+export default connect(null, { setAlert })(Register);
