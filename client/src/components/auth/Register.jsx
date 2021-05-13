@@ -1,10 +1,13 @@
 import React, { Fragment, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 import { connect } from "react-redux";
 import { setAlert } from "../../redux/actions/alert";
+import { register } from "../../redux/actions/auth";
 import PropTypes from "prop-types";
-const Register = ({ setAlert }) => {
+
+
+const Register = ({ setAlert, register, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -23,9 +26,14 @@ const Register = ({ setAlert }) => {
     if (password !== confirmPassword) {
       setAlert("Passwords don't match", "danger");
     } else {
-      console.log("succ");
+      register({ name, email, password });
     }
   };
+
+    //Redirect if logged in
+    if(isAuthenticated){
+      return <Redirect to="/dashboard"></Redirect>
+    }
 
   return (
     <Fragment>
@@ -41,7 +49,6 @@ const Register = ({ setAlert }) => {
             name="name"
             type="text"
             placeholder="Name"
-            required
             maxLength="20"
           />
         </div>
@@ -52,7 +59,6 @@ const Register = ({ setAlert }) => {
             name="email"
             type="email"
             placeholder="Email Adress"
-            required
           />
           <small className="form-text">
             This site uses gravatar. If you want to use your gravatar, use a
@@ -66,8 +72,6 @@ const Register = ({ setAlert }) => {
             name="password"
             type="password"
             placeholder="Password"
-            required
-            minLength="6"
             maxLength="20"
           />
         </div>
@@ -81,8 +85,6 @@ const Register = ({ setAlert }) => {
             name="confirmPassword"
             type="password"
             placeholder="Confirm Password"
-            required
-            minLength="6"
             maxLength="20"
           />
         </div>
@@ -100,6 +102,11 @@ const Register = ({ setAlert }) => {
 
 Register.propTypes = {
   setAlert: PropTypes.func.isRequired,
+  register: PropTypes.func.isRequired,
 };
 
-export default connect(null, { setAlert })(Register);
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated,
+})
+
+export default connect(mapStateToProps, { setAlert, register })(Register);
